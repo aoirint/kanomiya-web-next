@@ -34,6 +34,8 @@ const videos: Video[] = [
 export default function Home() {
   const { nicoliveData } = useLiveinfoApiMiddlewareNicolive();
   const { ytliveData } = useLiveinfoApiMiddlewareYtlive();
+  const nicoliveCardVisible = nicoliveData != null && nicoliveData.program.isOnair;
+  const ytliveCardVisible = ytliveData != null && ytliveData.program.isOnair;
 
   return (
     <>
@@ -64,25 +66,32 @@ export default function Home() {
               </p>
             </div>
           </div>
-          {nicoliveData != null && nicoliveData.program.isOnair ? (
-            <NicoliveCard
-              programUrl={nicoliveData.program.url}
-              programTitle={nicoliveData.program.title}
-              communityUrl={nicoliveData.community.url}
-              communityName={nicoliveData.community.name}
-              userUrl={nicoliveData.user.url}
-              userName={nicoliveData.user.name}
-              thumbnailUrl={nicoliveData.program.thumbnails[0] ?? null}
-            />
-          ) : ''}
-          {ytliveData != null && ytliveData.program.isOnair ? (
-            <YtliveCard
-              programUrl={ytliveData.program.url}
-              programTitle={ytliveData.program.title}
-              channelUrl={ytliveData.channel.url}
-              channelName={ytliveData.channel.name}
-              thumbnailUrl={ytliveData.program.thumbnails.standard?.url ?? null}
-            />
+          {nicoliveCardVisible || ytliveCardVisible || true ? (
+            <>
+              <h2 className='title is-4 mt-5'>
+                ライブ配信中
+              </h2>
+              {nicoliveCardVisible ? (
+                <NicoliveCard
+                  programUrl={nicoliveData.program.url}
+                  programTitle={nicoliveData.program.title}
+                  communityUrl={nicoliveData.community.url}
+                  communityName={nicoliveData.community.name}
+                  userUrl={nicoliveData.user.url}
+                  userName={nicoliveData.user.name}
+                  thumbnailUrl={nicoliveData.program.thumbnails[0] ?? null}
+                />
+              ) : ''}
+              {ytliveCardVisible ? (
+                <YtliveCard
+                  programUrl={ytliveData.program.url}
+                  programTitle={ytliveData.program.title}
+                  channelUrl={ytliveData.channel.url}
+                  channelName={ytliveData.channel.name}
+                  thumbnailUrl={ytliveData.program.thumbnails.standard?.url ?? null}
+                />
+              ) : ''}
+            </>
           ) : ''}
           <h2 className='title is-4 mt-5'>
             動画
