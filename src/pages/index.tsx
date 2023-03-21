@@ -1,4 +1,7 @@
+import useLiveinfoApiMiddlewareNicolive from '@/api/useLiveinfoApiMiddlewareNicolive'
+import LiveinfoApiMiddlewareYtliveCard from '@/components/LiveinfoApiMiddlewareYtliveCard'
 import Navbar from '@/components/Navbar'
+import NicoliveCard from '@/components/NicoliveCard'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -28,6 +31,8 @@ const videos: Video[] = [
 ]
 
 export default function Home() {
+  const { loading: nicoliveLoading, nicoliveData } = useLiveinfoApiMiddlewareNicolive();
+
   return (
     <>
       <Head>
@@ -57,6 +62,17 @@ export default function Home() {
               </p>
             </div>
           </div>
+          {nicoliveData != null && nicoliveData.program.isOnair ? (
+            <NicoliveCard
+              programUrl={nicoliveData.program.url}
+              programTitle={nicoliveData.program.title}
+              communityUrl={nicoliveData.community.url}
+              communityName={nicoliveData.community.name}
+              userUrl={nicoliveData.user.url}
+              userName={nicoliveData.user.name}
+              thumbnailUrl={nicoliveData.program.thumbnails[0] ?? null}
+            />
+          ) : ''}
           <h2 className='title is-4 mt-5'>
             動画
           </h2>
