@@ -28,7 +28,9 @@ const Navbar: React.FC<{}> = () => {
               <Link className="navbar-item" href="/">
                 ホーム
               </Link>
+            </div>
 
+            <div className="navbar-end">
               <a className="navbar-item" rel="me" href="https://www.nicovideo.jp/user/91385177">
                 ニコニコ動画
               </a>
@@ -36,9 +38,7 @@ const Navbar: React.FC<{}> = () => {
               <a className="navbar-item" rel="me" href="https://youtube.com/channel/UC7OazbQ3Eo9vrkcReXGIZkQ">
                 YouTube
               </a>
-            </div>
 
-            <div className="navbar-end">
               <a className="navbar-item" rel="me" href="https://twitter.com/kanomiyanic">
                 Twitter
               </a>
