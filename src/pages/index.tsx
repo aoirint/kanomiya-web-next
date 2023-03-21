@@ -69,8 +69,8 @@ export default function Home() {
                       <Image
                         src={video.thumbnailUrl}
                         alt="Thumbnail image"
-                        width="1280"
-                        height="720"
+                        width="1920"
+                        height="1080"
                       />
                     </p>
                   </figure>
