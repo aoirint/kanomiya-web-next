@@ -61,8 +61,8 @@ export default function Home() {
             動画
           </h2>
           <div className='columns is-vcentered'>
-            {videos.map((video) => (
-              <div className='column'>
+            {videos.map((video, videoIndex) => (
+              <div key={videoIndex} className='column'>
                 <article className="media">
                   <figure className="media-left">
                     <p className="image is-128x128">
