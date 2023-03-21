@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 interface Video {
   title: string
+  date: string
   thumbnailUrl: string
   youtubeUrl: string | null
   nicovideoUrl: string | null
@@ -12,12 +13,14 @@ interface Video {
 const videos: Video[] = [
   {
     title: "【ずんだもんうぉーず】クイーン！　バクダン祭りで地雷除去 #1【Among Us】",
+    date: "2022-08-13",
     thumbnailUrl: "/videos/images/blank.png",
     youtubeUrl: "https://www.youtube.com/watch?v=T7fmoCUc8Q0",
     nicovideoUrl: "https://www.nicovideo.jp/watch/sm40894795",
   },
   {
     title: "シルシランドレポート【Fall Guys】",
+    date: "2022-04-23",
     thumbnailUrl: "/videos/images/blank.png",
     youtubeUrl: "https://www.youtube.com/watch?v=CG0TROESjwM",
     nicovideoUrl: "https://www.nicovideo.jp/watch/sm40364332",
@@ -72,7 +75,8 @@ export default function Home() {
                     </p>
                   </figure>
                   <div className="media-content">
-                    <h2 className='title is-5 mb-3'>{video.title}</h2>
+                    <h2 className='title is-5'>{video.title}</h2>
+                    <h3 className='subtitle is-6 mb-3'>{video.date}</h3>
                     <div>
                       {video.nicovideoUrl != null ? (
                         <a className='button pl-2 mr-2' href={video.nicovideoUrl}>
