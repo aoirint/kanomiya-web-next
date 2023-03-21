@@ -1,7 +1,8 @@
 import useLiveinfoApiMiddlewareNicolive from '@/api/useLiveinfoApiMiddlewareNicolive'
-import LiveinfoApiMiddlewareYtliveCard from '@/components/LiveinfoApiMiddlewareYtliveCard'
+import useLiveinfoApiMiddlewareYtlive from '@/api/useLiveinfoApiMiddlewareYtlive'
 import Navbar from '@/components/Navbar'
 import NicoliveCard from '@/components/NicoliveCard'
+import YtliveCard from '@/components/YtliveCard'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -31,7 +32,8 @@ const videos: Video[] = [
 ]
 
 export default function Home() {
-  const { loading: nicoliveLoading, nicoliveData } = useLiveinfoApiMiddlewareNicolive();
+  const { nicoliveData } = useLiveinfoApiMiddlewareNicolive();
+  const { ytliveData } = useLiveinfoApiMiddlewareYtlive();
 
   return (
     <>
@@ -71,6 +73,15 @@ export default function Home() {
               userUrl={nicoliveData.user.url}
               userName={nicoliveData.user.name}
               thumbnailUrl={nicoliveData.program.thumbnails[0] ?? null}
+            />
+          ) : ''}
+          {ytliveData != null && ytliveData.program.isOnair ? (
+            <YtliveCard
+              programUrl={ytliveData.program.url}
+              programTitle={ytliveData.program.title}
+              channelUrl={ytliveData.channel.url}
+              channelName={ytliveData.channel.name}
+              thumbnailUrl={ytliveData.program.thumbnails.standard?.url ?? null}
             />
           ) : ''}
           <h2 className='title is-4 mt-5'>
