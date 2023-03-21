@@ -19,7 +19,7 @@ const videos: Video[] = [
     nicovideoUrl: "https://www.nicovideo.jp/watch/sm40894795",
   },
   {
-    title: "シルシランドレポート【Fall Guys】",
+    title: "【シルシランドずんだもん視点】シルシランドレポート【Fall Guys】",
     date: "2022-04-23",
     thumbnailUrl: "/videos/thumbnails/sirusiland_1.jpg",
     youtubeUrl: "https://www.youtube.com/watch?v=CG0TROESjwM",
