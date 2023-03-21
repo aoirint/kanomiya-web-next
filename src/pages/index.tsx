@@ -66,7 +66,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          {nicoliveCardVisible || ytliveCardVisible || true ? (
+          {nicoliveCardVisible || ytliveCardVisible ? (
             <>
               <h2 className='title is-4 mt-5'>
                 ライブ配信中
