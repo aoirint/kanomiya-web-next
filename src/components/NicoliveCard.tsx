@@ -22,7 +22,7 @@ const NicoliveCard: React.FC<NicoliveCardProps> = ({
   return (
     <>
       <div
-        className='card mb-6'
+        className='card mb-4'
         style={
           thumbnailUrl != null ? {
             backgroundImage: `url(${thumbnailUrl})`,
