@@ -14,14 +14,14 @@ const videos: Video[] = [
   {
     title: "【ずんだもんうぉーず】クイーン！　バクダン祭りで地雷除去 #1【Among Us】",
     date: "2022-08-13",
-    thumbnailUrl: "/videos/images/blank.png",
+    thumbnailUrl: "/videos/thumbnails/zundamonwars_amongus_1.png",
     youtubeUrl: "https://www.youtube.com/watch?v=T7fmoCUc8Q0",
     nicovideoUrl: "https://www.nicovideo.jp/watch/sm40894795",
   },
   {
     title: "シルシランドレポート【Fall Guys】",
     date: "2022-04-23",
-    thumbnailUrl: "/videos/images/blank.png",
+    thumbnailUrl: "/videos/thumbnails/sirusiland_1.jpg",
     youtubeUrl: "https://www.youtube.com/watch?v=CG0TROESjwM",
     nicovideoUrl: "https://www.nicovideo.jp/watch/sm40364332",
   },
