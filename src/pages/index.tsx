@@ -2,6 +2,28 @@ import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import Image from 'next/image'
 
+interface Video {
+  title: string
+  thumbnailUrl: string
+  youtubeUrl: string | null
+  nicovideoUrl: string | null
+}
+
+const videos: Video[] = [
+  {
+    title: "【ずんだもんうぉーず】クイーン！　バクダン祭りで地雷除去 #1【Among Us】",
+    thumbnailUrl: "/videos/images/blank.png",
+    youtubeUrl: "https://www.youtube.com/watch?v=T7fmoCUc8Q0",
+    nicovideoUrl: "https://www.nicovideo.jp/watch/sm40894795",
+  },
+  {
+    title: "シルシランドレポート【Fall Guys】",
+    thumbnailUrl: "/videos/images/blank.png",
+    youtubeUrl: "https://www.youtube.com/watch?v=CG0TROESjwM",
+    nicovideoUrl: "https://www.nicovideo.jp/watch/sm40364332",
+  },
+]
+
 export default function Home() {
   return (
     <>
@@ -31,6 +53,58 @@ export default function Home() {
                 ニコニコ・ボイロ・ゲーム
               </p>
             </div>
+          </div>
+          <h2 className='title is-4 mt-5'>
+            動画
+          </h2>
+          <div className='columns is-vcentered'>
+            {videos.map((video) => (
+              <div className='column'>
+                <article className="media">
+                  <figure className="media-left">
+                    <p className="image is-128x128">
+                      <Image
+                        src={video.thumbnailUrl}
+                        alt="Thumbnail image"
+                        width="1280"
+                        height="720"
+                      />
+                    </p>
+                  </figure>
+                  <div className="media-content">
+                    <h2 className='title is-5 mb-3'>{video.title}</h2>
+                    <div>
+                      {video.nicovideoUrl != null ? (
+                        <a className='button pl-2 mr-2' href={video.nicovideoUrl}>
+                          <figure className="image is-32x32">
+                            <Image
+                              src="/videos/images/niconico_icon.png"
+                              alt="Niconico icon"
+                              width="302"
+                              height="302"
+                            />
+                          </figure>
+                          ニコニコ動画
+                        </a>
+                      ) : ''}
+                      {video.youtubeUrl != null ? (
+                        <a className='button pl-2 mr-2' href={video.youtubeUrl}>
+                          <figure className="image is-32x32">
+                            <Image
+                              src="/videos/images/youtube_icon.png"
+                              alt="YouTube icon"
+                              width="1300"
+                              height="1300"
+                            />
+                          </figure>
+                          YouTube
+                        </a>
+                      ) : ''}
+                    </div>
+                  </div>
+                </article>
+              </div>
+            ))}
           </div>
         </div>
       </section>
