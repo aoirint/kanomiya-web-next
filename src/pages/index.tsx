@@ -60,6 +60,9 @@ export default function Home() {
           <h2 className='title is-4 mt-5'>
             動画
           </h2>
+          <p className='subtitle is-6 mb-5'>
+            合成音声キャラクターを使った動画を投稿しています。
+          </p>
           <div className='columns is-vcentered'>
             {videos.map((video, videoIndex) => (
               <div key={videoIndex} className='column'>
