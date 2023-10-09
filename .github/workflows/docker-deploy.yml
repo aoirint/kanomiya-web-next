@@ -71,12 +71,16 @@ jobs:
         env:
           IMAGE_NAME_AND_TAG: ${{ format('{0}:{1}', env.IMAGE_NAME, env.IMAGE_TAG) }}
         run: |
-          mkdir -p ./out ./.next
-          sudo chown -R "1000:1000" ./out ./.next
-          docker run --rm --init \
-            -v "$PWD/out:/work/out" \
+          mkdir -p ./.next
+          sudo chown -R "1000:1000" ./.next
+
+          docker run --init --name "builder" \
             -v "$PWD/.next:/work/.next" \
             "${{ env.IMAGE_NAME_AND_TAG }}"
+
+          docker cp "builder:/work/out" "$PWD/out"
+          docker rm -f "builder"
+
           sudo chown -R "$(id -u):$(id -g)" ./out ./.next
 
       - name: Upload artifact
