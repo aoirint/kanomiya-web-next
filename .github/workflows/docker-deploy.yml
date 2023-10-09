@@ -62,12 +62,10 @@ jobs:
       - name: Cache
         uses: actions/cache@v3
         with:
-          path: |
-            ./public
-            ./.cache
-          key: ${{ runner.os }}-next-build-cache-v2-${{ github.sha }}
+          path: ./.next
+          key: ${{ runner.os }}-next-build-cache-v3-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-next-build-cache-v2-
+            ${{ runner.os }}-next-build-cache-v3-
 
       - name: Build
         env:
