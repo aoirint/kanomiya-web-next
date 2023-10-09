@@ -2,8 +2,8 @@
 
 ## Dependencies
 
-- Node 18 (>=18.14.2)
-- npm 9
+- Node 20 (>= 20.7.0)
+- npm 10
 
 ### Switch Node version with nvm
 
