@@ -1,4 +1,4 @@
-# kanomiya.com-next
+# kanomiya-web-next
 
 ## Dependencies
 
