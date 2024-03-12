@@ -6,11 +6,14 @@ interface LiveinfoApiMiddlewareV1YtliveResponse {
     title: string
     description: string
     url: string
-    thumbnails: Record<string, {
-      url: string
-      width: number
-      height: number
-    }>
+    thumbnails: Record<
+      string,
+      {
+        url: string
+        width: number
+        height: number
+      }
+    >
     startTime: string
     endTime: string
     isOnair: boolean
@@ -18,17 +21,22 @@ interface LiveinfoApiMiddlewareV1YtliveResponse {
   channel: {
     name: string
     url: string
-    thumbnails: Record<string, {
-      url: string
-      width: number
-      height: number
-    }>
+    thumbnails: Record<
+      string,
+      {
+        url: string
+        width: number
+        height: number
+      }
+    >
   }
 }
 
 const useLiveinfoApiMiddlewareYtlive = () => {
   const [loading, setLoading] = React.useState<boolean>(true)
-  const [ytliveData, setYtliveData] = React.useState<LiveinfoApiMiddlewareV1YtliveResponse | null>(null)
+  const [ytliveData, setYtliveData] = React.useState<LiveinfoApiMiddlewareV1YtliveResponse | null>(
+    null,
+  )
 
   React.useEffect(() => {
     if (ytliveData === null) {

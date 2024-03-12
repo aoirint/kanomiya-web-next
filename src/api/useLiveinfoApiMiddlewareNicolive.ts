@@ -25,7 +25,8 @@ interface LiveinfoApiMiddlewareV1NicoliveResponse {
 
 const useLiveinfoApiMiddlewareNicolive = () => {
   const [loading, setLoading] = React.useState<boolean>(true)
-  const [nicoliveData, setNicoliveData] = React.useState<LiveinfoApiMiddlewareV1NicoliveResponse | null>(null)
+  const [nicoliveData, setNicoliveData] =
+    React.useState<LiveinfoApiMiddlewareV1NicoliveResponse | null>(null)
 
   React.useEffect(() => {
     if (nicoliveData === null) {

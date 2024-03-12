@@ -24,31 +24,35 @@ const NicoliveCard: React.FC<NicoliveCardProps> = ({
       <div
         className='card mb-4'
         style={
-          thumbnailUrl != null ? {
-            backgroundImage: `url(${thumbnailUrl})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundColor: 'whitesmoke',
-          } : {}
+          thumbnailUrl != null
+            ? {
+                backgroundImage: `url(${thumbnailUrl})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundColor: 'whitesmoke',
+              }
+            : {}
         }
       >
         <div
-          className="card-content py-4"
+          className='card-content py-4'
           style={
-            thumbnailUrl != null ? {
-              backgroundColor: 'rgba(255, 255, 255, 0.75)',
-            } : {}
+            thumbnailUrl != null
+              ? {
+                  backgroundColor: 'rgba(255, 255, 255, 0.75)',
+                }
+              : {}
           }
         >
-          <div className="media">
-            <div className="media-content">
+          <div className='media'>
+            <div className='media-content'>
               <>
-                <p className="title is-5">
+                <p className='title is-5'>
                   <a href={programUrl} style={{ color: 'inherit' }}>
                     {programTitle}
                   </a>
                 </p>
-                <p className="subtitle is-7 mb-2">
+                <p className='subtitle is-7 mb-2'>
                   <a href={communityUrl} style={{ color: 'inherit' }}>
                     {communityName}
                   </a>
@@ -59,9 +63,7 @@ const NicoliveCard: React.FC<NicoliveCardProps> = ({
                 </p>
               </>
               <p className='is-size-7 has-text-right has-text-grey'>
-                Powered by
-                {' '}
-                <a href="https://com.nicovideo.jp/community/co5633084">ニコニコ生放送</a>
+                Powered by <a href='https://com.nicovideo.jp/community/co5633084'>ニコニコ生放送</a>
               </p>
             </div>
           </div>
