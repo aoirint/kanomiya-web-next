@@ -1,3 +1,5 @@
+"use client"
+
 import useLiveinfoApiMiddlewareNicolive from '@/api/useLiveinfoApiMiddlewareNicolive'
 import useLiveinfoApiMiddlewareYtlive from '@/api/useLiveinfoApiMiddlewareYtlive'
 import Navbar from '@/components/Navbar'
