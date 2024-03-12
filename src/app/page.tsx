@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import useLiveinfoApiMiddlewareNicolive from '@/api/useLiveinfoApiMiddlewareNicolive'
-import useLiveinfoApiMiddlewareYtlive from '@/api/useLiveinfoApiMiddlewareYtlive'
+import useLiveinfoApiMiddlewareNicolive from '@/hooks/useLiveinfoApiMiddlewareNicolive'
+import useLiveinfoApiMiddlewareYtlive from '@/hooks/useLiveinfoApiMiddlewareYtlive'
 import Navbar from '@/components/Navbar'
 import NicoliveCard from '@/components/NicoliveCard'
 import YtliveCard from '@/components/YtliveCard'
