@@ -28,7 +28,7 @@ RUN --mount=type=cache,uid=1000,gid=1000,target=/home/user/.npm <<EOF
   gosu user npm ci
 EOF
 
-ADD --chown=user:user ./next.config.mjs ./next-sitemap.config.js ./tsconfig.json ./.eslintrc.json ./.env.production /work/
+ADD --chown=user:user ./next.config.mjs ./next-sitemap.config.js ./tsconfig.json ./.eslintrc.json ./.prettierrc.json ./.env.production /work/
 ADD --chown=user:user ./public /work/public
 ADD --chown=user:user ./src /work/src
 
