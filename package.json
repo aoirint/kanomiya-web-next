@@ -11,7 +11,7 @@
     "build": "next build && next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}' && next lint --fix"
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,mjs,ts,tsx,json}' && next lint --fix"
   },
   "dependencies": {
     "@types/node": "20.8.9",
