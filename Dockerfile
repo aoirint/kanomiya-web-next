@@ -23,7 +23,7 @@ WORKDIR /work
 ADD --chown=user:user ./package.json ./package-lock.json ./.npmrc /work/
 RUN gosu user npm ci
 
-ADD --chown=user:user ./next.config.mjs ./next-sitemap.config.js ./tsconfig.json ./.eslintrc.json /work/
+ADD --chown=user:user ./next.config.mjs ./next-sitemap.config.js ./tsconfig.json ./.eslintrc.json ./.env.production /work/
 ADD --chown=user:user ./public /work/public
 ADD --chown=user:user ./src /work/src
 
