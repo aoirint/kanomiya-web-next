@@ -84,7 +84,7 @@ jobs:
           sudo chown -R "$(id -u):$(id -g)" ./out ./.next
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
