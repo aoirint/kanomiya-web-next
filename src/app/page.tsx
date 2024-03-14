@@ -18,6 +18,13 @@ interface Video {
 
 const videos: Video[] = [
   {
+    title: '【ずんだもんうぉーず】闇鍋ジャッカル全滅R〒A #2【Among Us／Extreme Roles】',
+    date: '2024-01-28',
+    thumbnailUrl: '/videos/thumbnails/zundamonwars_amongus_2.jpg',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Yy-3rAS9x9E',
+    nicovideoUrl: 'https://www.nicovideo.jp/watch/sm43323152',
+  },
+  {
     title: '【ずんだもんうぉーず】クイーン！　バクダン祭りで地雷除去 #1【Among Us】',
     date: '2022-08-13',
     thumbnailUrl: '/videos/thumbnails/zundamonwars_amongus_1.png',
