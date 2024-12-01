@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function VideoCard(props: {
   title: string
@@ -23,16 +24,16 @@ export default function VideoCard(props: {
             <h3 className='subtitle is-6 mb-3'>{date}</h3>
             <div>
               {nicovideoUrl != null ? (
-                <a className='button mr-2' href={nicovideoUrl}>
+                <Link className='button mr-2' href={nicovideoUrl}>
                   ニコニコ動画
-                </a>
+                </Link>
               ) : (
                 ''
               )}
               {youtubeUrl != null ? (
-                <a className='button mr-2' href={youtubeUrl}>
+                <Link className='button mr-2' href={youtubeUrl}>
                   YouTube
-                </a>
+                </Link>
               ) : (
                 ''
               )}
