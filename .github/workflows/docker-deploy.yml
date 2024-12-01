@@ -36,16 +36,19 @@ jobs:
       - name: Checkout production resources
         uses: actions/checkout@v4
         env:
+          content_repository_url: ${{ secrets.CONTENT_REPOSITORY_URL }}
           content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
-        if: ${{ env.content_repository_token != '' }}
+        if: ${{ env.content_repository_url != '' && env.content_repository_token != '' }}
         with:
+          repository: ${{ env.content_repository_url }}
           path: resources
-          token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
+          token: ${{ env.content_repository_token }}
 
       - name: Extract production resources
         env:
+          content_repository_url: ${{ secrets.CONTENT_REPOSITORY_URL }}
           content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
-        if: ${{ env.content_repository_token != '' }}
+        if: ${{ env.content_repository_url != '' && env.content_repository_token != '' }}
         run: rsync -av ./resources/ public/
 
       - name: Setup Docker Buildx
