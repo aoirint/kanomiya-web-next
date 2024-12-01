@@ -56,8 +56,8 @@ const Navbar: React.FC<{}> = () => {
                 YouTube
               </a>
 
-              <a className='navbar-item' rel='me' href='https://twitter.com/kanomiyanic'>
-                Twitter
+              <a className='navbar-item' rel='me' href='https://x.com/kanomiyanic'>
+                X
               </a>
               <a className='navbar-item' rel='me' href='https://mstdn.aoirint.com/@kanomiyanic'>
                 Fediverse
