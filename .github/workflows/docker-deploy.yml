@@ -33,22 +33,29 @@ jobs:
           submodules: recursive
 
       # GitHub Secretが設定されている場合、本番用リソースを展開
+      - uses: actions/create-github-app-token@v1
+        id: content-repository-app-token
+        env:
+          content_repository_app_id: ${{ vars.CONTENT_REPOSITORY_APP_ID }}
+        if: ${{ env.content_repository_app_id != ''}
+        with:
+          app-id: ${{ env.content_repository_app_id }}
+          private-key: ${{ secrets.CONTENT_REPOSITORY_APP_PRIVATE_KEY }}
+
       - name: Checkout production resources
         uses: actions/checkout@v4
         env:
-          content_repository_url: ${{ secrets.CONTENT_REPOSITORY_URL }}
-          content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
-        if: ${{ env.content_repository_url != '' && env.content_repository_token != '' }}
+          content_repository_app_id: ${{ vars.CONTENT_REPOSITORY_APP_ID }}
+        if: ${{ env.content_repository_app_id != ''}
         with:
-          repository: ${{ env.content_repository_url }}
+          repository: ${{ secrets.CONTENT_REPOSITORY_URL }}
           path: ./resources
-          token: ${{ env.content_repository_token }}
+          token: ${{ steps.content-repository-app-token.outputs.token }}
 
       - name: Extract production resources
         env:
-          content_repository_url: ${{ secrets.CONTENT_REPOSITORY_URL }}
-          content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
-        if: ${{ env.content_repository_url != '' && env.content_repository_token != '' }}
+          content_repository_app_id: ${{ vars.CONTENT_REPOSITORY_APP_ID }}
+        if: ${{ env.content_repository_app_id != ''}
         run: rsync -av ./resources/ ./public/
 
       - name: Setup Docker Buildx
