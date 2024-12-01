@@ -32,6 +32,25 @@ jobs:
         with:
           submodules: recursive
 
+      # GitHub Secretが設定されている場合、本番用リソースを展開
+      - name: Checkout production resources
+        uses: actions/checkout@v4
+        env:
+          content_repository_url: ${{ secrets.CONTENT_REPOSITORY_URL }}
+          content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
+        if: ${{ env.content_repository_url != '' && env.content_repository_token != '' }}
+        with:
+          repository: ${{ env.content_repository_url }}
+          path: ./resources
+          token: ${{ env.content_repository_token }}
+
+      - name: Extract production resources
+        env:
+          content_repository_url: ${{ secrets.CONTENT_REPOSITORY_URL }}
+          content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
+        if: ${{ env.content_repository_url != '' && env.content_repository_token != '' }}
+        run: rsync -av ./resources/ ./public/
+
       - name: Setup Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v3
