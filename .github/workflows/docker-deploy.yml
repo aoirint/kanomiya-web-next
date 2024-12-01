@@ -35,13 +35,17 @@ jobs:
       # GitHub Secretが設定されている場合、本番用リソースを展開
       - name: Checkout production resources
         uses: actions/checkout@v4
-        if: ${{ secrets.CONTENT_REPOSITORY_TOKEN != '' }}
+        env:
+          content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
+        if: ${{ env.content_repository_token != '' }}
         with:
           path: resources
           token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
 
       - name: Extract production resources
-        if: ${{ secrets.CONTENT_REPOSITORY_TOKEN != '' }}
+        env:
+          content_repository_token: ${{ secrets.CONTENT_REPOSITORY_TOKEN }}
+        if: ${{ env.content_repository_token != '' }}
         run: rsync -av ./resources/ public/
 
       - name: Setup Docker Buildx
