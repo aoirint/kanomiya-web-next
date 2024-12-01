@@ -83,38 +83,14 @@ export default async function Home() {
                     <h3 className='subtitle is-6 mb-3'>{video.date}</h3>
                     <div>
                       {video.nicovideoUrl != null ? (
-                        <a className='button pl-2 mr-2' href={video.nicovideoUrl}>
-                          <figure className='image is-32x32'>
-                            <Image
-                              src='/videos/images/niconico_icon_black.png'
-                              className='visible-if-light'
-                              alt='Niconico icon'
-                              width='302'
-                              height='302'
-                            />
-                            <Image
-                              src='/videos/images/niconico_icon_white.png'
-                              className='visible-if-dark'
-                              alt='Niconico icon'
-                              width='302'
-                              height='302'
-                            />
-                          </figure>
+                        <a className='button mr-2' href={video.nicovideoUrl}>
                           ニコニコ動画
                         </a>
                       ) : (
                         ''
                       )}
                       {video.youtubeUrl != null ? (
-                        <a className='button pl-2 mr-2' href={video.youtubeUrl}>
-                          <figure className='image is-32x32'>
-                            <Image
-                              src='/videos/images/youtube_icon.png'
-                              alt='YouTube icon'
-                              width='1300'
-                              height='1300'
-                            />
-                          </figure>
+                        <a className='button mr-2' href={video.youtubeUrl}>
                           YouTube
                         </a>
                       ) : (
