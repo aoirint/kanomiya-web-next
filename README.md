@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-- Node.js 22
+- Node 22
 - npm 10
 
 ### Switch Node version with nvm
