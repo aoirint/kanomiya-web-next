@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { z } from 'zod'
 import { readFile } from 'fs/promises'
 import LiveInfoSection from '@/components/LiveInfoSection'
+import VideoCard from '@/components/VideoCard'
 
 const VideoSchema = z.object({
   title: z.string(),
@@ -66,40 +67,14 @@ export default async function Home() {
           <p className='subtitle is-6 mb-5'>合成音声キャラクターを使った動画を投稿しています。</p>
           <div className='columns is-desktop is-vcentered is-multiline'>
             {videos.map((video, videoIndex) => (
-              <div key={videoIndex} className='column is-half-desktop'>
-                <article className='media'>
-                  <figure className='media-left'>
-                    <p className='image is-128x128'>
-                      <Image
-                        src={video.thumbnailUrl}
-                        alt='Thumbnail image'
-                        width='1920'
-                        height='1080'
-                      />
-                    </p>
-                  </figure>
-                  <div className='media-content'>
-                    <h2 className='title is-5'>{video.title}</h2>
-                    <h3 className='subtitle is-6 mb-3'>{video.date}</h3>
-                    <div>
-                      {video.nicovideoUrl != null ? (
-                        <a className='button mr-2' href={video.nicovideoUrl}>
-                          ニコニコ動画
-                        </a>
-                      ) : (
-                        ''
-                      )}
-                      {video.youtubeUrl != null ? (
-                        <a className='button mr-2' href={video.youtubeUrl}>
-                          YouTube
-                        </a>
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                  </div>
-                </article>
-              </div>
+              <VideoCard
+                key={videoIndex}
+                title={video.title}
+                date={video.date}
+                thumbnailUrl={video.thumbnailUrl}
+                youtubeUrl={video.youtubeUrl}
+                nicovideoUrl={video.nicovideoUrl}
+              />
             ))}
           </div>
         </div>
