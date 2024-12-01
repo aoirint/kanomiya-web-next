@@ -41,6 +41,7 @@ jobs:
         with:
           app-id: ${{ env.content_repository_app_id }}
           private-key: ${{ secrets.CONTENT_REPOSITORY_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
 
       - name: Checkout production resources
         uses: actions/checkout@v4
