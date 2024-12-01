@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import './globals.scss'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 export const metadata: Metadata = {
