@@ -59,7 +59,7 @@ jobs:
         if: ${{ env.content_repository_app_id != ''}}
         run: |
             # ./resources/.git のコピーは危険なので防止
-            rsync -av --exclude ".git/" ./resources/ ./public/
+            rsync -av --exclude ".git/" ./resources/public/ ./public/
 
       - name: Setup Docker Buildx
         id: buildx
