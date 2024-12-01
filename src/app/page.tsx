@@ -86,7 +86,15 @@ export default async function Home() {
                         <a className='button pl-2 mr-2' href={video.nicovideoUrl}>
                           <figure className='image is-32x32'>
                             <Image
-                              src='/videos/images/niconico_icon.png'
+                              src='/videos/images/niconico_icon_black.png'
+                              className='visible-if-light'
+                              alt='Niconico icon'
+                              width='302'
+                              height='302'
+                            />
+                            <Image
+                              src='/videos/images/niconico_icon_white.png'
+                              className='visible-if-dark'
                               alt='Niconico icon'
                               width='302'
                               height='302'

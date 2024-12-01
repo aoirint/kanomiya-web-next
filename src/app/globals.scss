@@ -1,0 +1,28 @@
+@import 'bulma/css/bulma.css';
+
+// https://bulma.io/documentation/features/dark-mode/
+@media (prefers-color-scheme: light) {
+  .visible-if-dark {
+    display: none !important;
+  }
+}
+
+[data-theme=light],
+.theme-light {
+  .visible-if-dark {
+    display: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .visible-if-light {
+    display: none !important;
+  }
+}
+
+[data-theme=dark],
+.theme-dark {
+  .visible-if-dark {
+    display: none !important;
+  }
+}
