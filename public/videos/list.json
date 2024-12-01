@@ -1,0 +1,11 @@
+{
+  "videos": [
+    {
+      "title": "ダミー",
+      "date": "2024-12-01",
+      "thumbnailUrl": "/videos/thumbnails/blank.png",
+      "youtubeUrl": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+      "nicovideoUrl": "https://www.nicovideo.jp/watch/sm9"
+    }
+  ]
+}

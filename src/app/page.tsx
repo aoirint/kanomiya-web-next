@@ -1,50 +1,40 @@
-'use client'
-
-import useLiveinfoApiMiddlewareNicolive from '@/hooks/useLiveinfoApiMiddlewareNicolive'
-import useLiveinfoApiMiddlewareYtlive from '@/hooks/useLiveinfoApiMiddlewareYtlive'
 import Navbar from '@/components/Navbar'
-import NicoliveCard from '@/components/NicoliveCard'
-import YtliveCard from '@/components/YtliveCard'
 import Head from 'next/head'
 import Image from 'next/image'
 
-interface Video {
-  title: string
-  date: string
-  thumbnailUrl: string
-  youtubeUrl: string | null
-  nicovideoUrl: string | null
-}
+import { z } from 'zod'
+import { readFile } from 'fs/promises'
+import LiveInfoSection from '@/components/LiveInfoSection'
 
-const videos: Video[] = [
-  {
-    title: '【ずんだもんうぉーず】闇鍋ジャッカル全滅R〒A #2【Among Us／Extreme Roles】',
-    date: '2024-01-28',
-    thumbnailUrl: '/videos/thumbnails/zundamonwars_amongus_2.png',
-    youtubeUrl: 'https://www.youtube.com/watch?v=Yy-3rAS9x9E',
-    nicovideoUrl: 'https://www.nicovideo.jp/watch/sm43323152',
-  },
-  {
-    title: '【ずんだもんうぉーず】クイーン！　バクダン祭りで地雷除去 #1【Among Us】',
-    date: '2022-08-13',
-    thumbnailUrl: '/videos/thumbnails/zundamonwars_amongus_1.png',
-    youtubeUrl: 'https://www.youtube.com/watch?v=T7fmoCUc8Q0',
-    nicovideoUrl: 'https://www.nicovideo.jp/watch/sm40894795',
-  },
-  {
-    title: '【シルシランドずんだもん視点】シルシランドレポート【Fall Guys】',
-    date: '2022-04-23',
-    thumbnailUrl: '/videos/thumbnails/sirusiland_1.jpg',
-    youtubeUrl: 'https://www.youtube.com/watch?v=CG0TROESjwM',
-    nicovideoUrl: 'https://www.nicovideo.jp/watch/sm40364332',
-  },
-]
+const VideoSchema = z.object({
+  title: z.string(),
+  date: z.string(),
+  thumbnailUrl: z.string(),
+  youtubeUrl: z.string().nullable(),
+  nicovideoUrl: z.string().nullable(),
+})
 
-export default function Home() {
-  const { nicoliveData } = useLiveinfoApiMiddlewareNicolive()
-  const { ytliveData } = useLiveinfoApiMiddlewareYtlive()
-  const nicoliveCardVisible = nicoliveData != null && nicoliveData.program.isOnair
-  const ytliveCardVisible = ytliveData != null && ytliveData.program.isOnair
+export type Video = z.infer<typeof VideoSchema>
+
+const VideoListContainerSchema = z.object({
+  videos: z.array(VideoSchema),
+})
+
+export type VideoListContainer = z.infer<typeof VideoListContainerSchema>
+
+export default async function Home() {
+  const videoListContainerFile = 'public/videos/list.json'
+
+  let videoListContainer = null
+  try {
+    const videoListContainerString = await readFile(videoListContainerFile, 'utf-8')
+    const videoListContainerObject = JSON.parse(videoListContainerString)
+    videoListContainer = await VideoListContainerSchema.parseAsync(videoListContainerObject)
+  } catch (error) {
+    console.error(error)
+  }
+
+  const videos = videoListContainer?.videos ?? []
 
   return (
     <>
@@ -71,37 +61,7 @@ export default function Home() {
               <p className='subtitle is-6 pt-1'>ニコニコ・ボイロ・ゲーム</p>
             </div>
           </div>
-          {nicoliveCardVisible || ytliveCardVisible ? (
-            <>
-              <h2 className='title is-4 mt-5'>ライブ配信中</h2>
-              {nicoliveCardVisible ? (
-                <NicoliveCard
-                  programUrl={nicoliveData.program.url}
-                  programTitle={nicoliveData.program.title}
-                  communityUrl={nicoliveData.community.url}
-                  communityName={nicoliveData.community.name}
-                  userUrl={nicoliveData.user.url}
-                  userName={nicoliveData.user.name}
-                  thumbnailUrl={nicoliveData.program.thumbnails[0] ?? null}
-                />
-              ) : (
-                ''
-              )}
-              {ytliveCardVisible ? (
-                <YtliveCard
-                  programUrl={ytliveData.program.url}
-                  programTitle={ytliveData.program.title}
-                  channelUrl={ytliveData.channel.url}
-                  channelName={ytliveData.channel.name}
-                  thumbnailUrl={ytliveData.program.thumbnails.standard?.url ?? null}
-                />
-              ) : (
-                ''
-              )}
-            </>
-          ) : (
-            ''
-          )}
+          <LiveInfoSection />
           <h2 className='title is-4 mt-5'>動画</h2>
           <p className='subtitle is-6 mb-5'>合成音声キャラクターを使った動画を投稿しています。</p>
           <div className='columns is-desktop is-vcentered is-multiline'>
