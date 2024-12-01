@@ -57,7 +57,9 @@ jobs:
         env:
           content_repository_app_id: ${{ vars.CONTENT_REPOSITORY_APP_ID }}
         if: ${{ env.content_repository_app_id != ''}}
-        run: rsync -av ./resources/ ./public/
+        run: |
+            # ./resources/.git のコピーは危険なので防止
+            rsync -av --exclude ".git/" ./resources/public/ ./public/
 
       - name: Setup Docker Buildx
         id: buildx
