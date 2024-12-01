@@ -37,7 +37,7 @@ jobs:
         id: content-repository-app-token
         env:
           content_repository_app_id: ${{ vars.CONTENT_REPOSITORY_APP_ID }}
-        if: ${{ env.content_repository_app_id != ''}
+        if: ${{ env.content_repository_app_id != ''}}
         with:
           app-id: ${{ env.content_repository_app_id }}
           private-key: ${{ secrets.CONTENT_REPOSITORY_APP_PRIVATE_KEY }}
@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v4
         env:
           content_repository_app_id: ${{ vars.CONTENT_REPOSITORY_APP_ID }}
-        if: ${{ env.content_repository_app_id != ''}
+        if: ${{ env.content_repository_app_id != ''}}
         with:
           repository: ${{ secrets.CONTENT_REPOSITORY_URL }}
           path: ./resources
@@ -55,7 +55,7 @@ jobs:
       - name: Extract production resources
         env:
           content_repository_app_id: ${{ vars.CONTENT_REPOSITORY_APP_ID }}
-        if: ${{ env.content_repository_app_id != ''}
+        if: ${{ env.content_repository_app_id != ''}}
         run: rsync -av ./resources/ ./public/
 
       - name: Setup Docker Buildx
